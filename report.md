@@ -6,13 +6,15 @@ June, 2020
 
 ### Specification
 
-Followed te steps from the [README](.README.md) file.
+Followed te steps from the [README](./README.md) file.
 
 ### Result
 
-[Sample Video](./data/sample01.mp4)
+The final result can be checked with this [sample video](./data/sample01.mp4).
+
+![Sample](./data/sample01.png)
 
 ### Links
 
  * [Original Repository](https://github.com/udacity/SFND_Lidar_Obstacle_Detection)
- * [Project Rubric](rubrik https://review.udacity.com/#!/rubrics/2529/view)
+ * [Project Rubric](https://review.udacity.com/#!/rubrics/2529/view)
