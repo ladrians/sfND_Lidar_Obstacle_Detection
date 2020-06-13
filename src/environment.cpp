@@ -56,12 +56,6 @@ void cityBlock(pcl::visualization::PCLVisualizer::Ptr& viewer, ProcessPointCloud
 
         ++clusterId;
     }
-
-    //renderPointCloud(viewer,inputCloud,"inputCloud");
-
-    //// Experiment with the ? values and find what works best
-    //filterCloud = pointProcessorI->FilterCloud(inputCloud, ? , Eigen::Vector4f (?, ?, ?, 1), Eigen::Vector4f ( ?, ?, ?, 1));
-    //renderPointCloud(viewer,filterCloud,"filterCloud");
 }
 
 void simpleHighway(pcl::visualization::PCLVisualizer::Ptr& viewer)
