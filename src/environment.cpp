@@ -35,13 +35,34 @@ std::vector<Car> initHighway(bool renderScene, pcl::visualization::PCLVisualizer
 }
 
 void cityBlock(pcl::visualization::PCLVisualizer::Ptr& viewer, ProcessPointClouds<pcl::PointXYZI> pointProcessor, pcl::PointCloud<pcl::PointXYZI>::Ptr inputCloud)
-//void cityBlock(pcl::visualization::PCLVisualizer::Ptr& viewer)
 {
-    //ProcessPointClouds<pcl::PointXYZI>* pointProcessorI = new ProcessPointClouds<pcl::PointXYZI>();
-    //pcl::PointCloud<pcl::PointXYZI>::Ptr inputCloud = pointProcessorI->loadPcd("../src/sensors/data/pcd/data_1/0000000000.pcd");
-    inputCloud = pointProcessor.FilterCloud(inputCloud, 0.3, Eigen::Vector4f(-10, -5, -2, 1), Eigen::Vector4f(30, 8, 1, 1));
-    std::pair<pcl::PointCloud<pcl::PointXYZI>::Ptr, pcl::PointCloud<pcl::PointXYZI>::Ptr> segmentCloud = pointProcessor.SegmentPlane(inputCloud, 25, 0.3);
-    std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr> cloudClusters = pointProcessor.Clustering(segmentCloud.first, 0.53, 10, 500);
+    int maxIterations = 100;//75;//25;
+    float distanceThreshold = 0.2;//0.5;//0.25;//0.3;
+
+    float filterRes = 0.3;
+    int x_min = -20;//-10;
+    int y_min = -6;//-5;
+    int z_min = -3;//-2;
+    int x_max = 30;
+    int y_max = 7;//8;
+    int z_max = 2;//1;
+
+    float clusterTolerance = 0.50;//0.53
+    int minSize = 20;//10;
+    int maxSize = 800;//1600;//1500;//500
+    bool use_course_segmentation = false;
+
+    inputCloud = pointProcessor.FilterCloud(inputCloud, filterRes, Eigen::Vector4f(x_min, y_min, z_min, 1), Eigen::Vector4f(x_max, y_max, z_max, 1));
+    std::pair<pcl::PointCloud<pcl::PointXYZI>::Ptr, pcl::PointCloud<pcl::PointXYZI>::Ptr> segmentCloud = pointProcessor.SegmentPlane(inputCloud, maxIterations, distanceThreshold);
+    std::vector<pcl::PointCloud<pcl::PointXYZI>::Ptr> cloudClusters;
+    if (use_course_segmentation) {
+        //// Course Original Solution
+        cloudClusters = pointProcessor.Clustering(segmentCloud.first, clusterTolerance, minSize, maxSize);
+    }
+    else {
+        // Euclidean Cluster Solution
+        cloudClusters = pointProcessor.Clustering2(segmentCloud.first, clusterTolerance, minSize, maxSize);
+    }
 
     int clusterId = 0;
     std::vector<Color> colors = {Color(1,0,0), Color(1,1,0), Color(0,0,1)};
