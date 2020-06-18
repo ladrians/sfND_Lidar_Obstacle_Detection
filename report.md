@@ -16,7 +16,7 @@ The final result can be checked with this [sample video](./data/sample02.mp4) an
 
 Using Euclidean Custering and RANSAC.
 
-![Sample](./data/sample02.png)
+![Sample](./data/sample02.gif)
 
 #### Course Implementation
 
