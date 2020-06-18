@@ -10,9 +10,23 @@ Followed te steps from the [README](./README.md) file.
 
 ### Result
 
-The final result can be checked with this [sample video](./data/sample01.mp4).
+The final result can be checked with this [sample video](./data/sample02.mp4) and compared with the [Course solution sample video](./data/sample01.mp4).
+
+#### Current Implementation
+
+Using Euclidean Custering and RANSAC.
+
+![Sample](./data/sample02.png)
+
+#### Course Implementation
+
+Using PCL library
 
 ![Sample](./data/sample01.png)
+
+## Considerations
+
+The color switching between the detections in consecutive frames details that `Tracking` is needed once an obstacle is detected.
 
 ### Links
 
