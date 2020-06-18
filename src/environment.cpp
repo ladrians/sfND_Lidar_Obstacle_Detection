@@ -40,12 +40,12 @@ void cityBlock(pcl::visualization::PCLVisualizer::Ptr& viewer, ProcessPointCloud
     float distanceThreshold = 0.2;//0.5;//0.25;//0.3;
 
     float filterRes = 0.3;
-    int x_min = -20;//-10;
-    int y_min = -6;//-5;
-    int z_min = -3;//-2;
+    int x_min = -10;;
+    int y_min = -5;
+    int z_min = -2;
     int x_max = 30;
-    int y_max = 7;//8;
-    int z_max = 2;//1;
+    int y_max = 8;;
+    int z_max = 1;
 
     float clusterTolerance = 0.50;//0.53
     int minSize = 20;//10;
